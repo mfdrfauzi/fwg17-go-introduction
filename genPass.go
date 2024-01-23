@@ -71,25 +71,3 @@ func genPass(password, level string) string {
 
 	return password
 }
-
-// func main() {
-// 	var password, level string
-// 	fmt.Print("Enter password: ")
-// 	fmt.Scan(&password)
-
-// 	for {
-// 		fmt.Print("Enter level (low, med, strong): ")
-// 		fmt.Scan(&level)
-
-// 		if strings.ToLower(level) == "low" || strings.ToLower(level) == "med" || strings.ToLower(level) == "strong" {
-// 			break
-// 		} else {
-// 			fmt.Println("Invalid level. Please enter 'low', 'med', or 'strong'.")
-// 		}
-// 	}
-
-// 	result := genPass(password, level)
-// 	if result != "" {
-// 		fmt.Println(result)
-// 	}
-// }

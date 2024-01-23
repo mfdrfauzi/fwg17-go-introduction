@@ -15,7 +15,3 @@ func printSegitiga(n int) {
 		fmt.Println()
 	}
 }
-
-// func main() {
-// 	printSegitiga(7)
-// }
