@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func genPass(password, level string) string {
+func genPass(password string, level string) string {
 	minLength := 6
 	lowercase := "abcdefghijklmnopqrstuvwxyz"
 	digits := "0123456789"
@@ -17,10 +17,10 @@ func genPass(password, level string) string {
 		password += string(chars[randomIndex])
 	}
 
-	addUppercase := func() {
+	randUppercase := func() {
 		numUppercase := rand.Intn(len(password)-1) + 1
 
-		for i := 0; i < numUppercase; i++ {
+		for i := 0; i <= numUppercase; i++ {
 			randomIndex := rand.Intn(len(password))
 			upperChar := strings.ToUpper(string(password[randomIndex]))
 			password = password[:randomIndex] + upperChar + password[randomIndex+1:]
@@ -33,7 +33,7 @@ func genPass(password, level string) string {
 		for i := 0; i < numDigits; i++ {
 			randomIndex := rand.Intn(len(password)-1) + 1
 			randomDigit := rand.Intn(len(digits))
-			password = password[:randomIndex] + string('0'+randomDigit) + password[randomIndex:]
+			password = password[:randomIndex] + string(digits[randomDigit]) + password[randomIndex:]
 		}
 	}
 
@@ -43,7 +43,7 @@ func genPass(password, level string) string {
 		for i := 0; i < numSpecialChars; i++ {
 			randomIndex := rand.Intn(len(password)-1) + 1
 			randomSpecialChar := rand.Intn(len(specialChars))
-			password = password[:randomIndex] + string(randomSpecialChar) + password[randomIndex:]
+			password = password[:randomIndex] + string(specialChars[randomSpecialChar]) + password[randomIndex:]
 		}
 	}
 
@@ -53,10 +53,9 @@ func genPass(password, level string) string {
 
 	switch strings.ToLower(level) {
 	case "low", "med", "strong":
-		addUppercase()
+		randUppercase()
 	default:
 		fmt.Println("Invalid level. Please enter 'low', 'med', or 'strong'.")
-		return ""
 	}
 
 	switch strings.ToLower(level) {

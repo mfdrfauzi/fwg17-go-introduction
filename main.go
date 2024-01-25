@@ -9,11 +9,12 @@ func main() {
 	//Print Segitiga
 
 	fmt.Println("---Print Segitiga Terbalik---")
-	printSegitiga(7)
+	printSegitiga(12)
 
 	//Generate Password
 	fmt.Println("---Generate Password---")
 	var password, level string
+
 	fmt.Print("Enter password: ")
 	fmt.Scan(&password)
 
@@ -30,7 +31,7 @@ func main() {
 
 	result := genPass(password, level)
 	if result != "" {
-		fmt.Println(result)
+		fmt.Println(result) //perlu / tidak vlidasi di sini
 	}
 
 	//Movie Duration
